@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>炸金花 · 规则查询与牌型对照</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #eff6f9;
+            background-image: radial-gradient(circle at 5% 15%, #d8eee8 0%, #eaf3f0 70%);
+            color: #1f2e3a;
+            line-height: 1.6;
+            padding: 1.2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* --- hero 卡片式主视觉 --- */
+        .hero-card {
+            background: linear-gradient(145deg, #1c4a5c 0%, #1b5d6b 100%);
+            border-radius: 2rem;
+            padding: 2.2rem 1.8rem;
+            margin-bottom: 2.2rem;
+            box-shadow: 0 12px 28px rgba(18, 60, 65, 0.20);
+            color: #e6f5f2;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .hero-card h1 {
+            font-size: 2.2rem;
+            font-weight: 570;
+            letter-spacing: 0.03em;
+            background: rgba(255,255,245,0.08);
+            display: inline-block;
+            padding: 0.1rem 1.2rem 0.1rem 0;
+            border-left: 5px solid #6fc3c2;
+            line-height: 1.2;
+            margin-bottom: 0.2rem;
+        }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            opacity: 0.92;
+            max-width: 80%;
+            border-top: 1px solid rgba(255,255,245,0.2);
+            padding-top: 0.9rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem 2.5rem;
+            margin-top: 0.3rem;
+            background: rgba(0,0,0,0.08);
+            border-radius: 1.5rem;
+            padding: 0.8rem 1.5rem;
+            backdrop-filter: blur(2px);
+        }
+
+        .hero-stats span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-stats i {
+            font-style: normal;
+            background: #5bafaa;
+            border-radius: 50%;
+            width: 1.8rem;
+            height: 1.8rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #0f2d32;
+            margin-right: 0.2rem;
+        }
+
+        /* --- 信息卡片网格 --- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0 1.8rem;
+        }
+
+        @media (min-width: 580px) {
+            .card-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 1.8rem;
+            padding: 1.6rem 1.5rem;
+            border: 1px solid rgba(60, 130, 130, 0.25);
+            box-shadow: 0 6px 14px rgba(32, 72, 72, 0.06);
+            transition: 0.2s ease;
+        }
+
+        .info-card:hover {
+            background: rgba(255, 255, 255, 0.84);
+            border-color: #478f93;
+            box-shadow: 0 10px 18px rgba(32, 82, 82, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .info-card h3 {
+            font-size: 1.3rem;
+            font-weight: 550;
+            color: #1b4f57;
+            border-bottom: 2px solid #6bb6b0;
+            padding-bottom: 0.3rem;
+            margin-bottom: 0.9rem;
+            display: inline-block;
+        }
+
+        .info-card ul, .info-card p {
+            font-size: 0.98rem;
+            color: #1d3540;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-card li {
+            padding: 0.25rem 0 0.25rem 1.4rem;
+            position: relative;
+        }
+
+        .info-card li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #2e8a8a;
+            font-weight: bold;
+        }
+
+        .tag {
+            background: #d2ece5;
+            color: #11535b;
+            border-radius: 3rem;
+            padding: 0.2rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            display: inline-block;
+            margin-right: 0.3rem;
+            border: 1px solid #8ac5bf;
+        }
+
+        /* --- 自然链接段落 --- */
+        .link-paragraph {
+            background: #ffffffdd;
+            backdrop-filter: blur(4px);
+            border-radius: 1.8rem;
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0 2.4rem;
+            border-left: 6px solid #2f898b;
+            box-shadow: 0 4px 10px rgba(0,40,40,0.03);
+        }
+
+        .link-paragraph p {
+            margin: 0.8rem 0;
+            font-size: 1.02rem;
+        }
+
+        .link-paragraph a {
+            color: #1a6a6f;
+            text-decoration: none;
+            font-weight: 550;
+            border-bottom: 2px solid #8ccac4;
+            transition: 0.15s;
+        }
+
+        .link-paragraph a:hover {
+            border-bottom-color: #1e5b5b;
+            color: #0b3e42;
+            background: #d6f0ea;
+            padding: 0 0.15rem;
+        }
+
+        .faq-mini {
+            background: #f6fcfb;
+            border-radius: 1.8rem;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.5rem 1rem;
+            margin: 1.8rem 0 2rem;
+            border: 1px solid #b1dbd3;
+        }
+
+        .faq-mini span {
+            font-size: 0.95rem;
+            color: #1c4c4f;
+        }
+
+        .faq-mini strong {
+            color: #11535b;
+        }
+
+        .faq-mini .faq-q {
+            background: #d1e9e3;
+            border-radius: 2rem;
+            padding: 0.1rem 1rem;
+        }
+
+        /* --- 适合人群卡片（独立） --- */
+        .audience-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.2rem;
+            background: #eaf6f2;
+            padding: 0.9rem 1.2rem;
+            border-radius: 2.5rem;
+            margin: 0.5rem 0 0.8rem;
+        }
+
+        .audience-item {
+            background: white;
+            border-radius: 3rem;
+            padding: 0.2rem 1.2rem 0.2rem 1rem;
+            border: 1px solid #6fb3ad;
+            font-size: 0.9rem;
+            color: #11535b;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        .audience-item::before {
+            content: "●";
+            color: #35807c;
+            margin-right: 0.3rem;
+            font-size: 0.7rem;
+        }
+
+        /* --- 页脚 --- */
+        .footer-note {
+            text-align: left;
+            padding: 1.5rem 0 0.5rem;
+            border-top: 1px solid #b1cfc9;
+            margin-top: 1.8rem;
+            font-size: 0.82rem;
+            color: #3e6769;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .footer-note a {
+            color: #2b696b;
+            text-decoration: none;
+            border-bottom: 1px dotted #7cb9b2;
+        }
+
+        @media (max-width: 460px) {
+            .hero-card h1 {
+                font-size: 1.8rem;
+            }
+            .hero-sub {
+                max-width: 100%;
+            }
+            .hero-stats {
+                flex-direction: column;
+                gap: 0.6rem;
+                padding: 0.6rem 1rem;
+            }
+            .info-card {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 主视觉卡片 hero -->
+    <div class="hero-card">
+        <h1>炸金花 · 牌型参考</h1>
+        <div class="hero-sub">日常查询｜比牌对照｜规则延伸</div>
+        <div class="hero-stats">
+            <span><i>♠</i> 豹子 · 同花顺 · 金花</span>
+            <span><i>♦</i> 顺子 · 对子 · 散牌</span>
+            <span><i>♣</i> 235 特殊</span>
+        </div>
+    </div>
+
+    <!-- 网格卡片：用途／场景／参考维度 -->
+    <div class="card-grid">
+        <div class="info-card">
+            <h3>📘 用途卡片</h3>
+            <ul>
+                <li>快速确认牌型大小顺序</li>
+                <li>比较特殊组合（如 A23 与 235）</li>
+                <li>查阅花色是否影响比牌</li>
+                <li>同花顺与豹子相遇规则</li>
+            </ul>
+            <div style="margin-top: 0.8rem;"><span class="tag">对照表</span><span class="tag">牌力索引</span></div>
+        </div>
+        <div class="info-card">
+            <h3>🧩 适合人群</h3>
+            <p style="margin-bottom: 0.5rem;">从新手到常玩者，只要需要一份轻量的规则速查：</p>
+            <div class="audience-row">
+                <span class="audience-item">入门玩家</span>
+                <span class="audience-item">临时组局</span>
+                <span class="audience-item">规则核对</span>
+                <span class="audience-item">延伸阅读</span>
+            </div>
+            <p style="font-size:0.92rem; margin-top:0.3rem;">不分线上线下，帮你快速对齐牌型认知。</p>
+        </div>
+        <div class="info-card">
+            <h3>🔍 常见查询点</h3>
+            <ul>
+                <li>豹子与同花顺谁更大</li>
+                <li>金花与顺子哪个概率高</li>
+                <li>散牌如何比最大张</li>
+                <li>特殊牌 235 何时生效</li>
+            </ul>
+        </div>
+        <div class="info-card">
+            <h3>🧠 延伸提示</h3>
+            <p>炸金花的趣味在于牌型组合与心理博弈。了解基础规则后，可以进一步研究不同人数下的概率偏移，以及场上剩余牌对成牌可能的影响。</p>
+            <p style="margin-top:0.6rem; font-size:0.9rem;">本站聚焦于牌型对照，不涉及概率计算器，但可作为规则起点。</p>
+        </div>
+    </div>
+
+    <!-- 自然链接段落（a标签自然嵌入句子） -->
+    <div class="link-paragraph">
+        <p>如果你正在查找一副牌中 <strong>炸金花</strong> 的完整牌型列表，或者需要快速确认某组手牌是否构成同花顺，那么 <a href="https://cnsite--zhajinhua.com">炸金花</a> 页面里整理了一份按强度排列的对照索引。从豹子到散牌，每种组合都附有简要说明，方便你在游戏间隙或者阅读相关文章时对照。</p>
+        <p>除了基础排序，该参考也涵盖了“235 吃豹子”的经典特殊规则，以及不同花色在比牌时的处理方式。若你习惯在与朋友讨论时引用具体牌例，不妨打开 <a href="https://cnsite--zhajinhua.com">炸金花</a> 作为共同参照。</p>
+    </div>
+
+    <!-- FAQ 摘要卡片 -->
+    <div class="faq-mini">
+        <span><strong>❓ 常见疑问</strong></span>
+        <span class="faq-q">同花顺比金花大几级？</span>
+        <span class="faq-q">对子 AA 和 22 比大小？</span>
+        <span>→ 牌型对照页内有详细等级</span>
+    </div>
+
+    <!-- 一段简短的承接段落（知识型语气） -->
+    <div style="background:#f2faf8; border-radius: 1.5rem; padding: 0.8rem 1.5rem; margin: 1.2rem 0; border:1px solid #bfe1da;">
+        <p style="font-size:0.96rem;">从实战角度看，熟悉牌型顺序可以帮助你更冷静地判断是否继续下注。但请记得：炸金花的变数与对手行为密切相关，规则只是第一步。</p>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+        <span>📋 内容仅供规则参考 · 保持更新</span>
+        <span><a href="https://cnsite--zhajinhua.com">炸金花</a> · 牌型索引</span>
+    </div>
+</div>
+</body>
+</html>
