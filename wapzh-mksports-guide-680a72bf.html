@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MK体育 – 站点介绍</title>
+    <style>
+        /* 极简留白 · 信息卡片基调 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #faf9f8;
+            color: #1e1e1e;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2.5rem 1.8rem 4rem;
+        }
+
+        /* 标题层级 */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.3rem;
+            color: #121212;
+        }
+
+        .subhead {
+            font-size: 1rem;
+            color: #6b6b6b;
+            margin-bottom: 2.2rem;
+            border-bottom: 1px solid #e5e3e0;
+            padding-bottom: 1.2rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin: 2.2rem 0 1.2rem;
+            color: #181818;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 0 0 0.5rem;
+            color: #2c2c2c;
+        }
+
+        p, li {
+            color: #333;
+            font-size: 1rem;
+        }
+
+        /* 卡片系统 */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            margin: 2rem 0 2.8rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.8rem 1.8rem 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02), 0 6px 28px rgba(0, 0, 0, 0.03);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04), 0 12px 36px rgba(0, 0, 0, 0.04);
+        }
+
+        .card p {
+            margin-bottom: 0.2rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.6rem 0 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1.4rem;
+        }
+
+        .card ul li::before {
+            content: "·";
+            margin-right: 0.4rem;
+            color: #9a9a9a;
+        }
+
+        .meta-tag {
+            display: inline-block;
+            background: #f0eeec;
+            padding: 0.1rem 0.8rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: #525252;
+            margin-top: 0.5rem;
+        }
+
+        /* 主视觉卡片（hero内敛） */
+        .hero-card {
+            background: #f3f1ef;
+            border-radius: 24px;
+            padding: 2.4rem 2rem;
+            margin-bottom: 1.8rem;
+            box-shadow: none;
+            border: 1px solid #eae7e3;
+        }
+
+        .hero-card h1 {
+            font-size: 2.6rem;
+            font-weight: 420;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-card p {
+            max-width: 600px;
+            font-size: 1.05rem;
+            color: #3a3a3a;
+        }
+
+        .trust-note {
+            background: #ffffff;
+            border-left: 4px solid #d4d0cb;
+            padding: 1.2rem 1.8rem;
+            margin: 2.4rem 0 1.8rem;
+            border-radius: 0 12px 12px 0;
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        /* 链接：自然嵌入句子 */
+        a {
+            color: #1d4d7c;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.1s;
+            font-weight: 450;
+        }
+
+        a:hover {
+            border-bottom-color: #1d4d7c;
+        }
+
+        .faq-item {
+            margin: 1.8rem 0 0.8rem;
+            border-top: 1px solid #ece9e6;
+            padding-top: 1.2rem;
+        }
+
+        .faq-item:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .faq-item strong {
+            font-weight: 550;
+            color: #1c1c1c;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .footnote {
+            margin-top: 3.5rem;
+            font-size: 0.85rem;
+            color: #8a8987;
+            border-top: 1px solid #e5e3e0;
+            padding-top: 1.8rem;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 500px) {
+            .page {
+                padding: 1.8rem 1.2rem 3rem;
+            }
+            .hero-card {
+                padding: 1.8rem 1.2rem;
+            }
+            .hero-card h1 {
+                font-size: 2rem;
+            }
+            .card {
+                padding: 1.5rem 1.2rem;
+            }
+            h2 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <!-- 主视觉卡片 · 干净有力 -->
+        <div class="hero-card">
+            <h1>MK体育 · 信息与指引</h1>
+            <p>一个聚焦运动资讯与线上体验的站点。这里以清晰、直接的方式呈现内容，帮助你在浏览过程中快速找到自己关心的部分。</p>
+        </div>
+
+        <p style="margin-bottom: 1.8rem; color: #4a4a4a;">
+            如果你对体育内容与平台服务感兴趣，可以了解一下 <a href="https://wapzh-mksports.com">MK体育</a> —— 
+            这个站点以运动类信息为主线，页面结构比较直白，适合随意翻阅或按需查找。
+        </p>
+
+        <!-- 用途卡片：站点侧重 -->
+        <h2>站点用途卡片</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>信息浏览与索引</h3>
+                <p>主要提供体育相关分类、赛事参考及平台功能入口。页面设计侧重简洁，降低干扰，便于快速定位内容。</p>
+                <span class="meta-tag">分类清晰</span>
+            </div>
+            <div class="card">
+                <h3>移动端适配 · 轻量呈现</h3>
+                <p>针对手机与平板浏览习惯做了布局调整，文字与卡片在窄屏上依然保持可读性，无需频繁缩放。</p>
+                <span class="meta-tag">响应式</span>
+            </div>
+            <div class="card">
+                <h3>内容聚合 · 自主探索</h3>
+                <p>不采用强推送式排版，更倾向于让用户根据兴趣自行选择板块。目前包含多个常见运动类别及资讯概要。</p>
+                <span class="meta-tag">低干扰</span>
+            </div>
+        </div>
+
+        <!-- 适合人群 -->
+        <h2>适合哪些人使用</h2>
+        <div class="card" style="margin-bottom: 2.2rem;">
+            <ul>
+                <li>日常关注体育动态、希望快速获得运动相关信息的浏览者</li>
+                <li>对线上平台功能有基础了解需求，但不希望被过度营销内容打扰的用户</li>
+                <li>习惯在移动设备上阅读、且偏好留白多、结构直的页面风格</li>
+                <li>想了解 MK体育 整体内容布局的新访客</li>
+            </ul>
+            <p style="margin-top: 0.8rem; color: #5a5a5a;">无论你是偶尔点开，还是想系统查看，都可以在站点内顺着导航找到对应模块。</p>
+        </div>
+
+        <!-- 可信说明 & 自然链接段落 -->
+        <div class="trust-note">
+            <strong style="display: block; font-weight: 500; color: #1f1f1f;">关于站点可信度</strong>
+            本介绍页仅作为信息说明使用。<a href="https://wapzh-mksports.com">MK体育</a> 是一个公开可访问的在线站点，其内容由平台方维护。
+            用户在访问时可根据自身判断筛选信息，并注意保护个人隐私与设备安全。
+        </div>
+
+        <p style="margin: 1.6rem 0 0.6rem;">
+            如果你之前没接触过这类页面，可以把它理解成一个<strong>以运动信息为线索的集合页</strong>。
+            入口就在上面提到的 <a href="https://wapzh-mksports.com">MK体育</a>，打开后即可浏览。
+        </p>
+
+        <!-- FAQ 摘要 · 克制真实 -->
+        <h2 style="margin-top: 3.2rem;">一些常见问题摘要</h2>
+
+        <div class="faq-item">
+            <strong>这个站点主要提供什么？</strong>
+            <p>以体育资讯、分类导航及平台相关功能入口为主，整体偏向信息展示型，不包含下载或直接交易功能。</p>
+        </div>
+        <div class="faq-item">
+            <strong>页面加载速度如何？</strong>
+            <p>采用相对轻量的前端结构，没有过多外部资源依赖。一般情况下在移动网络下也能较快打开。</p>
+        </div>
+        <div class="faq-item">
+            <strong>是否需要注册或登录？</strong>
+            <p>浏览大部分内容无需注册。部分互动或进阶功能可能涉及账户操作，请以站点实际提示为准。</p>
+        </div>
+        <div class="faq-item">
+            <strong>信息更新频率？</strong>
+            <p>内容由平台不定期更新，建议以站内显示的最新信息为准。本介绍页仅为概括说明。</p>
+        </div>
+
+        <!-- 收尾 -->
+        <div class="footnote">
+            <p>本页为独立介绍说明，与 <a href="https://wapzh-mksports.com">MK体育</a> 无直接隶属关系。内容仅供参考，请以实际站点呈现为准。</p>
+        </div>
+
+    </div>
+</body>
+</html>
