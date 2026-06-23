@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>MK体育 · 温和开场</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f0f7fa;
+      color: #1f2e3a;
+      line-height: 1.7;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .page-wrap {
+      max-width: 880px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* hero 段落区（无大图，以文字为主） */
+    .hero-tone {
+      background: linear-gradient(115deg, #e2f0f5 0%, #cfe7ee 100%);
+      border-radius: 32px;
+      padding: 2.5rem 2rem 2.8rem;
+      margin: 0.5rem 0 2.2rem;
+      box-shadow: 0 6px 20px rgba(42, 99, 112, 0.08);
+    }
+
+    .hero-tone .short-line {
+      font-size: 2.2rem;
+      font-weight: 350;
+      letter-spacing: -0.02em;
+      color: #115261;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-tone .short-line span {
+      font-weight: 600;
+      color: #0e5a6b;
+      background: linear-gradient(145deg, #b3dbe7, #a1d0df);
+      padding: 0 8px 2px;
+      border-radius: 30px;
+    }
+
+    .hero-tone p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-tone .mild-cta {
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(1px);
+      padding: 0.8rem 1.4rem 0.8rem 1.8rem;
+      border-radius: 60px;
+      display: inline-block;
+      border: 1px solid rgba(56, 125, 139, 0.15);
+    }
+
+    .hero-tone .mild-cta a {
+      color: #0a4959;
+      text-decoration: none;
+      font-weight: 550;
+      border-bottom: 2px solid #6faabd;
+      transition: border-color 0.2s;
+    }
+
+    .hero-tone .mild-cta a:hover {
+      border-bottom-color: #0f5163;
+    }
+
+    /* 承接段落 — 温和解析 */
+    .bridge-section {
+      background: #ffffffdd;
+      backdrop-filter: blur(2px);
+      padding: 2rem 1.8rem;
+      border-radius: 30px;
+      margin: 1.8rem 0;
+      box-shadow: 0 4px 16px rgba(38, 96, 110, 0.06);
+    }
+
+    .bridge-section h2 {
+      font-size: 1.6rem;
+      font-weight: 420;
+      color: #1b606f;
+      margin-bottom: 1rem;
+      border-left: 5px solid #65b1c7;
+      padding-left: 1rem;
+    }
+
+    .bridge-section p {
+      margin-bottom: 1rem;
+    }
+
+    .bridge-section .highlight-word {
+      color: #11616f;
+      font-weight: 470;
+    }
+
+    /* 特点卡片网格 — 网格卡片 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin: 2rem 0 1.8rem;
+    }
+
+    .feature-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 1.6rem 1.2rem 1.4rem;
+      box-shadow: 0 6px 14px rgba(36, 92, 105, 0.04);
+      border: 1px solid #d8e7ed;
+      transition: transform 0.1s ease, border 0.15s;
+    }
+
+    .feature-card:hover {
+      border-color: #aacfdc;
+      transform: translateY(-2px);
+    }
+
+    .feature-card .card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.3rem;
+      display: inline-block;
+      background: #ddecf2;
+      width: 48px;
+      height: 48px;
+      line-height: 48px;
+      text-align: center;
+      border-radius: 24px;
+      color: #145d6b;
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      font-weight: 520;
+      margin: 0.5rem 0 0.3rem;
+      color: #1c4e5b;
+      letter-spacing: -0.01em;
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: #2b4551;
+    }
+
+    /* 温和结尾 .closing-note */
+    .closing-note {
+      background: #e6f2f6;
+      border-radius: 40px 40px 24px 24px;
+      padding: 2rem 1.8rem 2rem;
+      margin: 2rem 0 0.8rem;
+      border-left: 6px solid #82bfd1;
+    }
+
+    .closing-note h3 {
+      font-weight: 400;
+      font-size: 1.4rem;
+      color: #124f5d;
+      margin-bottom: 0.8rem;
+    }
+
+    .closing-note p {
+      max-width: 640px;
+    }
+
+    .closing-note .mention-link {
+      background: #d9ecf3;
+      border-radius: 40px;
+      padding: 0.5rem 1.1rem;
+      display: inline-block;
+      margin-top: 0.8rem;
+      border: 1px solid #b2d4e0;
+    }
+
+    .closing-note .mention-link a {
+      color: #0b4e5f;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted #3a7f90;
+    }
+
+    .closing-note .mention-link a:hover {
+      border-bottom: 2px solid #0a5b6b;
+    }
+
+    /* FA角标 + 场景点缀 */
+    .scene-tip {
+      background: #f9fcfe;
+      border-radius: 28px;
+      padding: 1rem 1.8rem;
+      margin: 1.5rem 0 0.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      border: 1px solid #d0e3ea;
+    }
+
+    .scene-tip span {
+      background: #cee5ee;
+      border-radius: 60px;
+      padding: 0.3rem 1rem 0.3rem 1.2rem;
+      font-size: 0.9rem;
+      color: #145361;
+    }
+
+    .scene-tip small {
+      color: #2a5d6a;
+      opacity: 0.9;
+    }
+
+    /* 响应式细节 */
+    @media (max-width: 640px) {
+      body {
+        padding: 0.8rem;
+      }
+      .hero-tone {
+        padding: 1.8rem 1.2rem 2rem;
+      }
+      .hero-tone .short-line {
+        font-size: 1.8rem;
+      }
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .bridge-section {
+        padding: 1.5rem 1rem;
+      }
+      .closing-note {
+        padding: 1.5rem 1.2rem;
+      }
+      .hero-tone .mild-cta {
+        display: block;
+        text-align: center;
+      }
+      .feature-card .card-icon {
+        width: 42px;
+        height: 42px;
+        line-height: 42px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .hero-tone .short-line {
+        font-size: 1.5rem;
+      }
+      .bridge-section h2 {
+        font-size: 1.3rem;
+      }
+    }
+
+    footer {
+      margin-top: auto;
+      text-align: center;
+      font-size: 0.85rem;
+      padding: 1.2rem 0 0.3rem;
+      color: #507c88;
+      opacity: 0.7;
+      border-top: 1px solid #cedee6;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <!-- 开场短句 hero -->
+  <div class="hero-tone">
+    <div class="short-line">
+      从标题开始<br>一眼认出 <span>MK体育</span>
+    </div>
+    <p>
+      对于一个刚打开的页面，人们最想知道的是：这里提供什么？无论是浏览赛事动态，还是寻找运动相关的信息，<strong>清晰的第一印象</strong>往往决定了是否愿意留下来。
+    </p>
+    <div class="mild-cta">
+      <span>☕ 试着了解 · </span><a href="https://web-online-mksports.com">MK体育</a>
+    </div>
+  </div>
+
+  <!-- 承接段落：从识别到理解 -->
+  <div class="bridge-section">
+    <h2>它是谁？用来做什么？</h2>
+    <p>
+      <span class="highlight-word">MK体育</span>并不复杂。简单说，它是一个以体育为主题的线上聚合地——提供赛事资讯、运动内容以及相关互动。没有花哨的噱头，也没有让人迷惑的跳转。界面干净，分类清晰，你可以在几秒内判断是否匹配自己的兴趣。
+    </p>
+    <p>
+      很多人第一次访问时，会先看看<strong>运动种类、近期动态和内容更新的节奏</strong>。这些细节本身就在无声地告诉你：这个平台是否认真、是否可持续。而<a href="https://web-online-mksports.com" style="color: #0d5f71; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px;">MK体育</a>在这几个方面都保持着一种温和的稳定感，不急于说服，而是让内容自己说话。
+    </p>
+  </div>
+
+  <!-- 特点卡片：网格卡片，蓝绿点缀 -->
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="card-icon">🏅</div>
+      <h3>信息归类</h3>
+      <p>按运动项目、赛事类型整理，不堆砌。每个板块都有明确的标题与摘要，减少寻找成本。</p>
+    </div>
+    <div class="feature-card">
+      <div class="card-icon">🌊</div>
+      <h3>视觉呼吸感</h3>
+      <p>蓝绿为主色，卡片留白充足。阅读舒适，长时间浏览也不会觉得压迫。</p>
+    </div>
+    <div class="feature-card">
+      <div class="card-icon">📱</div>
+      <h3>移动端友好</h3>
+      <p>窄屏下依然保持可读性，按钮和链接间距合理。单手操作也没有压力。</p>
+    </div>
+    <div class="feature-card">
+      <div class="card-icon">📌</div>
+      <h3>克制更新</h3>
+      <p>内容节奏平稳，没有轰炸式推送。你可以按自己的步调浏览，不必追赶。</p>
+    </div>
+  </div>
+
+  <!-- 场景提示 + FAQ 摘要风格（非完整faq，仅摘要） -->
+  <div class="scene-tip">
+    <span>💬 常见问题摘要</span>
+    <small>「怎么找到某个运动？」→ 首页目录直接显示分类，无需注册即可看到概览。</small>
+    <small style="display: inline-block; margin-left: auto;">「内容更新频率？」→ 保持周更节奏，稳定但不泛滥。</small>
+  </div>
+
+  <!-- 温和结尾  -->
+  <div class="closing-note">
+    <h3>最后一点想法</h3>
+    <p>
+      一个网站如果能让你在三十秒内明白它的用途，就已经成功了很大一部分。<a href="https://web-online-mksports.com" style="color: #0c5f70; text-decoration: none; border-bottom: 1px solid #7bb8cb;">MK体育</a> 给我的感觉正是如此：<strong>不喧哗，有内容</strong>。如果你还在犹豫它是否适合自己，不妨花一分钟点进去随意看看。运动资讯的世界可以很安静，也可以很丰富——看你怎么选择。
+    </p>
+    <div class="mention-link">
+      📎 直达 · <a href="https://web-online-mksports.com">MK体育</a>
+    </div>
+  </div>
+
+  <footer>
+    页面由叙述方式呈现 · 内容方向：温和识别
+  </footer>
+</div>
+</body>
+</html>
